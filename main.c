@@ -10,45 +10,11 @@ typedef struct StackElement {
 void Push(StackElementType** Top, int Number);
 int Pop(StackElementType** Top);
 void Peek(StackElementType** Top);
+void MainLoop();
 
-int main() {
-
-    StackElementType* Top;
-    Top = NULL;
-
-    int Option = -1;
-    int Number = -1;
-
-    while(Option != 0)
-    {
-        printf("1. Push element to the stack \n");
-        printf("2. Pop element from the stack \n");
-        printf("3. Print element from the stack \n");
-        printf("0. Exit \n");
-
-        scanf("%i", &Option);
-
-        switch(Option)
-        {
-            case 0:
-                return 0;
-                break;
-            case 1:
-                printf("Pleas provide a integer: \n");
-                scanf("%i", &Number);
-                Push(&Top, Number);
-                break;
-            case 2:
-                Pop(&Top);
-                break;
-            case 3:
-                Peek(&Top);
-                break;
-            default:
-                printf("Choose a proper option \n");
-                break;
-        }
-    }
+int main()
+{
+    MainLoop();
 
     return 0;
 }
@@ -93,5 +59,49 @@ void Peek(StackElementType** Top)
     if(*Top != NULL)
     {
         printf("Element from the top of the stack: %i \n", (*Top)->Data);
+    }
+    else
+    {
+        printf("The stack is empty");
+    }
+}
+
+void MainLoop()
+{
+    StackElementType* Top;
+    Top = NULL;
+
+    int Option = -1;
+    int Number = -1;
+
+    while(Option != 0)
+    {
+        printf("1. Push element to the stack \n");
+        printf("2. Pop element from the stack \n");
+        printf("3. Print element from the stack \n");
+        printf("0. Exit \n");
+
+        scanf("%i", &Option);
+
+        switch(Option)
+        {
+            case 0:
+                return;
+                break;
+            case 1:
+                printf("Pleas provide a integer: \n");
+                scanf("%i", &Number);
+                Push(&Top, Number);
+                break;
+            case 2:
+                Pop(&Top);
+                break;
+            case 3:
+                Peek(&Top);
+                break;
+            default:
+                printf("Choose a proper option \n");
+                break;
+        }
     }
 }
